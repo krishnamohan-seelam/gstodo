@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="add-todo-form">
+    <h1> Todo Tasks</h1>
+    <div class="row">
+      <div class="col-md-6 col-sm-8">
+        <div class="form-group">
+          <input type="text" class="form-control input-md" placeholder="Task.." autofocus #todoTask>
+        </div>
+      </div>
+      <div class="col-md-1 col-sm-2">
+        <button class="btn btn-info btn-block" (click) ='addTodo($event,todoTask)'>Add <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <hr>
+</div>
+
+<!-- <div class="row">
+    <div class="col-md-4 col-sm-8">
+      <div class="alert alert-info text-center" *ngIf="todos">
+        No Tasks
+      </div>
+    </div>
+  </div>-->
+
+<div class="row">
+<div class="col-md-10 col-sm-10">
+  <div class="todo-list">
+
+
+
+    <div *ngFor="let todoItem of todos">
+      <div class="row">
+
+        <div class="col-md-4 col-sm-6">
+          <div class="list-group-item"> 
+            <span [class.hidden]="todoItem.isEditMode">{{todoItem.task}} </span>  
+
+            <input [class.hidden]="!todoItem.isEditMode" type="text" [value]="todoItem.task"  class="text" (keypress) ="updateTodoTask($event ,todoItem)" >
+             <input [class.hidden]="!todoItem.isEditMode" type="button" value="Cancel" (click)="setEditState(todoItem, false)" class="btn btn-warning">
+             </div>
+        </div>
+
+        <div class="col-md-1 col-sm-2">
+          <div class="checkbox checkbox-info checkbox-circle">
+            <input id="{{todoItem.task}}checkdone" type="checkbox" [checked]="todoItem.isCompleted"
+             (click)="updateTodoStatus(todoItem)" >
+             
+            <label for="{{todoItem.task}}checkdone">Done</label>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-3 col-sm-2">
+
+          <div class="btn-group">
+            <button [class.disabled]="todoItem.isCompleted" (click)="setEditState(todoItem, true)"  type="button" class="btn btn-primary" id="edit" value="Edit">
+              Edit <span class=" glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </button>
+
+
+            <button type="button" class=" btn btn-danger" id="delete" Value="Delete" (click) ="deleteTodoTask(todoItem)">
+              Delete <span class="fa fa-trash-o fa-lg " aria-hidden="true"></span> 
+          </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+</div>

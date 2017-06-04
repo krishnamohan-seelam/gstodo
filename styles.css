@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/yeti.bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+body {
+  padding-top: 0rem;
+}
+.starter-template {
+  padding: 1rem 1rem;
+  text-align: center;
+}
